@@ -11,19 +11,21 @@
 		<button type="submit">Convert to Words</button>
 	</form>
 
-	<form name="wordsToNumInput" action="" onsubmit="wordsToNum()" method="post">
+	<form name="wordsToNumInput" action="" onsubmit="wordsToNum('none', '0')" method="post">
 		Convert Words to Num: <input type="text" name="word">
 		<button type="submit">Convert to Num</button>
 	</form>
 
 	<form name="wordsToCurrencyInput" action="" onsubmit="wordsToCurrency()" method="post">
-		Convert Words to Curr:&nbsp; <input type="text" name="word">
+		Convert Words to Curr:&nbsp; <input type="text" name="word" placeholder=" Amount">
 		<button type="submit">Convert to Currency</button>
+		<br />&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" name="currency"  placeholder=" Currency (Ex. JPY)">
 	</form>
 
 	<form name="numDelimitedInput" action="" onsubmit="numDelimited()" method="post">
-		&emsp;&emsp;&nbsp;&nbsp;Delimit Numbers: <input type="text" name="num">
+		&emsp;&emsp;&nbsp;&nbsp;Delimit Numbers: <input type="text" name="num" placeholder = " Number">
 		<button type="submit">Delimit</button>
+		<br />&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" name="delimiter"  placeholder=" Delimiter" size="7px"><input type="text" name="jumps"  placeholder=" Jumps" size="8px">
 	</form>
 </body>
 

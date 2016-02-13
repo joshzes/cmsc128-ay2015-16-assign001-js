@@ -127,10 +127,12 @@ function numToWords(){
 	}
 }
 
-function wordsToNum(){
+function wordsToNum(words_given, x){
 	var num = 0;
 	var hold = 0;
-	var word = document.forms["wordsToNumInput"].elements["word"].value;
+	var word;
+	if(words_given == "none") word = document.forms["wordsToNumInput"].elements["word"].value;
+	else word = words_given;
 	var words = word.split(" ");
 	var i;
 
@@ -147,7 +149,8 @@ function wordsToNum(){
 		num += hold;
 	}
 
-	window.alert(num);
+	if (x == 0) window.alert(num);
+	else return num;
 
 	function getNum(word){
 		switch(word){
@@ -184,13 +187,23 @@ function wordsToNum(){
 }
 
 function wordsToCurrency(){
-	var currency;
+	var currency = document.forms["wordsToCurrencyInput"].elements["currency"].value;
 	var word = document.forms["wordsToCurrencyInput"].elements["word"].value;
-	window.alert(word);
+	var num = wordsToNum(word, 1);
+
+	window.alert(currency + num);
 }
 
 function numDelimited(){
-	var num_delimited;
+	var delimiter = document.forms["numDelimitedInput"].elements["delimiter"].value;
+	var jumps = document.forms["numDelimitedInput"].elements["jumps"].value;
+	jumps = jumps * 1;
 	var num = document.forms["numDelimitedInput"].elements["num"].value;
-	window.alert(num);
+
+	var temp1 = num.substr(0, num.length - jumps);
+	var temp2 = num.substr(num.length - jumps, num.length);
+
+	var num_delimited = temp1 + delimiter + temp2;
+
+	window.alert(num_delimited);
 }

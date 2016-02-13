@@ -124,13 +124,63 @@ function numToWords(){
 			case 9: return 'Nineteen';
 			case 0: return 'Ten';
 		}
-}
+	}
 }
 
 function wordsToNum(){
-	var num;
-	var words = document.forms["wordsToNumInput"].elements["word"].value;
-	window.alert(words);
+	var num = 0;
+	var hold = 0;
+	var word = document.forms["wordsToNumInput"].elements["word"].value;
+	var words = word.split(" ");
+	var i;
+
+	if(words[0] == "zero"){
+		num = 0;
+	}
+
+	for (i = 0; i < words.length; i++){
+		hold = (getNum(words[i])) * 1;
+		if(words[i+1] == "million") hold = hold * 1000000;
+		else if(words[i+1] == "hundred" && (words[i+2]=="thousand"||words[i+3]=="thousand"||words[i+4]=="thousand")) hold = hold *100000;
+		else if(words[i+1] == "thousand" || words[i+2] == "thousand") hold = hold * 1000;
+		else if(words[i+1] == "hundred") hold = hold * 100;
+		num += hold;
+	}
+
+	window.alert(num);
+
+	function getNum(word){
+		switch(word){
+			case "one": return 1;
+			case "two": return 2;
+			case "three": return 3;
+			case "four": return 4;
+			case "five": return 5;
+			case "six": return 6;
+			case "seven": return 7;
+			case "eight": return 8;
+			case "nine": return 9;
+			case "ten": return 10;
+			case "eleven": return 11;
+			case "twelve": return 12;
+			case "thirteen": return 13;
+			case "fourteen": return 14;
+			case "fifteen": return 15;
+			case "sixteen": return 16;
+			case "seventeen": return 17;
+			case "eighteen": return 18;
+			case "nineteen": return 19;
+			case "twenty": return 20;
+			case "thirty": return 30;
+			case "forty": return 40;
+			case "fifty": return 50;
+			case "sixty": return 60;
+			case "seventy": return 70;
+			case "eighty": return 80;
+			case "ninety": return 90;
+			default: return '';
+		}
+	}
 }
 
 function wordsToCurrency(){
